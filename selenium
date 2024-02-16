@@ -1,0 +1,26 @@
+from selenium import webdriver
+
+url = 'https://example.com'
+
+# Set the path to your chromedriver executable
+driver_path = '/path/to/chromedriver'
+
+# Create a new instance of the Chrome driver
+driver = webdriver.Chrome(executable_path=driver_path)
+
+# Navigate to the URL
+driver.get(url)
+
+# Wait for a few seconds to allow JavaScript to execute (you may need to adjust this)
+driver.implicitly_wait(5)
+
+# Get the page source after JavaScript has executed
+page_source = driver.page_source
+
+# Close the browser
+driver.quit()
+
+# Now, you can use BeautifulSoup to parse the page_source as before
+soup = BeautifulSoup(page_source, 'html.parser')
+
+# Continue with parsing and extracting information from the page
